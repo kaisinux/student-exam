@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Student Selector</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #result {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+    #doneMessage {
+      color: green;
+      font-weight: bold;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Random Student and Part Selector</h1>
+<button id="selectButton">Select Student and Part</button>
+<div id="result">Click the button to select a student and part</div>
+<div id="doneMessage"></div>
+
+<script>
+  const students = ["Student1", "Student2", "Student3", "Student4", "Student5", "Student6", "Student7", "Student8", 
+                    "Student9", "Student10", "Student11", "Student12", "Student13", "Student14", "Student15", "Student16"];
+  const parts = ["Part 1", "Part 2", "Part 3"];
+
+  function selectRandom() {
+    if (students.length === 0) {
+      document.getElementById("doneMessage").innerText = "All students are done!";
+      document.getElementById("selectButton").disabled = true;
+      return;
+    }
+
+    // Randomly select a student
+    const studentIndex = Math.floor(Math.random() * students.length);
+    const student = students.splice(studentIndex, 1)[0];
+
+    // Randomly select a part
+    const part = parts[Math.floor(Math.random() * parts.length)];
+
+    document.getElementById("result").innerText = `${student} - ${part}`;  
+  }
+
+  document.getElementById("selectButton").addEventListener("click", selectRandom);
+</script>
+
+</body>
+</html>
